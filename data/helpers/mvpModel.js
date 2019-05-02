@@ -17,14 +17,23 @@ function addDish(dish) {
     .insert(dish, 'id');
 }
 
-function getDish(id) {
-  return db('dishes as d')
+async function getDish(id) {
+  const dish = await db('dishes')
     .where({id})
     .first();
+  const recipes = await db('recipes')
+    .column
+    .where({ recipe_id: id });
+  return {
+    ...dish,
+    recipes
+  }
 }
 
-function getRecipes() {
-  return db('recipes');
+async function getRecipes() {
+  return db('recipes as r')
+    .select('r.id, r.name, r.dish_id, d.name as dish, r.instructions')
+    .leftJoin('dishes as d', 'r.dish_id', 'd.id');
 }
 
 function addRecipe(recipe) {
