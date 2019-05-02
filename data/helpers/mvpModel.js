@@ -9,21 +9,25 @@ module.exports = {
 }
 
 function getDishes() {
-  db('dishes');
+  return db('dishes');
 }
 
 function addDish(dish) {
-  db('dishes').insert(dish, 'id');
+  return db('dishes')
+    .insert(dish, 'id');
 }
 
 function getDish(id) {
-  db('dishes').where({id}).first();
+  return db('dishes as d')
+    .where({id})
+    .first();
 }
 
 function getRecipes() {
-  db('recipes');
+  return db('recipes');
 }
 
 function addRecipe(recipe) {
-  db('recipes').insert(recipe, 'id');
+  return db('recipes')
+    .insert(recipe, 'id');
 }
