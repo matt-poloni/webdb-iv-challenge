@@ -16,5 +16,6 @@ module.exports = {
         connection.run('PRAGMA foreign_keys = ON', done);
       }
     },
+    debug: true,
   },
 };
