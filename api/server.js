@@ -9,8 +9,8 @@ const server = express();
 server.use(helmet());
 server.use(express.json());
 
-// server.use('/api/route/', dishRouter);
-// server.use('/api/route/', recipeRouter);
+// server.use('/api/dishes/', dishRouter);
+// server.use('/api/recipes/', recipeRouter);
 
 server.use('/', (req, res) => {
   res.send("Up and running")
