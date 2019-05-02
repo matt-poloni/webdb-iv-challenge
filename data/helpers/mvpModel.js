@@ -23,7 +23,7 @@ async function getDish(id) {
     .first();
   const recipes = await db('recipes')
     .column
-    .where({ recipe_id: id });
+    .where({ dish_id: id });
   return {
     ...dish,
     recipes
