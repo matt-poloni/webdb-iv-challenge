@@ -30,9 +30,9 @@ async function getDish(id) {
   }
 }
 
-async function getRecipes() {
+function getRecipes() {
   return db('recipes as r')
-    .select('r.id, r.name, r.dish_id, d.name as dish, r.instructions')
+    .select('r.id', 'r.name', 'r.dish_id', 'd.name as dish', 'r.instructions')
     .leftJoin('dishes as d', 'r.dish_id', 'd.id');
 }
 
